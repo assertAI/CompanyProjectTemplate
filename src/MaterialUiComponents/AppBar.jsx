@@ -57,7 +57,7 @@ const ResponsiveAppBar = () => {
 							aria-controls="menu-appbar"
 							aria-haspopup="true"
 							onClick={handleOpenNavMenu}
-							color="inherit">
+							style={{ color: "#2D46B9" }}>
 							<MenuIcon />
 						</IconButton>
 						<Menu
@@ -76,11 +76,13 @@ const ResponsiveAppBar = () => {
 							onClose={handleCloseNavMenu}
 							sx={{
 								display: { xs: "block", md: "none" },
-								color: "black",
+								color: "#2D46B9",
 							}}>
 							{pages.map((page) => (
 								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">{page}</Typography>
+									<Typography textAlign="center" style={{ color: "#2D46B9" }}>
+										{page}
+									</Typography>
 								</MenuItem>
 							))}
 						</Menu>
@@ -89,7 +91,11 @@ const ResponsiveAppBar = () => {
 						variant="h6"
 						noWrap
 						component="div"
-						sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+						sx={{
+							flexGrow: 1,
+							display: { xs: "flex", md: "none" },
+							color: "#2D46B9",
+						}}>
 						LOGO
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
