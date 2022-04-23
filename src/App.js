@@ -1,9 +1,10 @@
 import "./App.css";
-
+import ResponsiveAppBar from "./MaterialUiComponents/AppBar";
 function App() {
 	return (
 		<div className="App">
-			<header className="App-header">This is dev Branch</header>
+			<ResponsiveAppBar />
+			<div className="newApp"></div>
 		</div>
 	);
 }
