@@ -127,6 +127,35 @@ main {
 
 }
 
+.sitetextbox{
+  padding: 0;
+  height: 30px;
+  width: 200px;
+  position: relative;
+  right: 50px;
+  outline: none;
+  border: 1px solid #cdcdcd;
+  border-color: rgba(0,0,0,.15);
+  background-color: white;
+  font-size: 16px;
+  color: red;
+  border-radius: 25px;
+}
+.datetextbox{
+  width: 200px;
+  padding: 0;
+  height: 30px;
+  position: relative;
+  left: 0;
+  outline: none;
+  border: 1px solid #cdcdcd;
+  border-color: rgba(0,0,0,.15);
+  background-color: white;
+  color: red;
+  border-radius: 25px;
+  font-size: 16px;
+}
+
 .newApp{
   background-color: #F6F6F6;
   height: 90vh;

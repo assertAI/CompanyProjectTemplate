@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,13 +11,23 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import  Switch from "../components/Switch";
+import ThemeContext from "../context/theme/ThemeContext";
+
 
 const pages = ["Company Name"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const [isDarkMode, setIsDarkMode] = useState(() => false);
+    const [isToggled, setIsToggled] = useState(false);
+    const a = useContext(ThemeContext);
+
+    useEffect(()=>{
+	  a.update1(isToggled);
+	},[isToggled]);  
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -34,10 +44,14 @@ const ResponsiveAppBar = () => {
 		setAnchorElUser(null);
 	};
 
+
 	return (
+		<>
+		
 		<AppBar position="static">
-			<Container maxWidth="xl" style={{ backgroundColor: "white" }}>
+			<Container maxWidth="xl" style={{ backgroundColor: a.state ? "#202124":"white" }}>
 				<Toolbar disableGutters>
+				
 					<Typography
 						variant="h6"
 						noWrap
@@ -45,11 +59,11 @@ const ResponsiveAppBar = () => {
 						sx={{
 							mr: 2,
 							display: { xs: "none", md: "flex" },
-							color: "#2D46B9",
+							color: a.state ? "white" : "#2D46B9",
 						}}>
 						LOGO
 					</Typography>
-
+					
 					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 						<IconButton
 							size="large"
@@ -57,7 +71,7 @@ const ResponsiveAppBar = () => {
 							aria-controls="menu-appbar"
 							aria-haspopup="true"
 							onClick={handleOpenNavMenu}
-							style={{ color: "#2D46B9" }}>
+							style={{ color: a.state ? "white" : "#2D46B9" }}>
 							<MenuIcon />
 						</IconButton>
 						<Menu
@@ -76,11 +90,11 @@ const ResponsiveAppBar = () => {
 							onClose={handleCloseNavMenu}
 							sx={{
 								display: { xs: "block", md: "none" },
-								color: "#2D46B9",
+								color: a.state ? "white" : "#2D46B9",
 							}}>
 							{pages.map((page) => (
 								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center" style={{ color: "#2D46B9" }}>
+									<Typography textAlign="center" style={{ color: a.state ? "white" : "#2D46B9" }}>
 										{page}
 									</Typography>
 								</MenuItem>
@@ -94,7 +108,7 @@ const ResponsiveAppBar = () => {
 						sx={{
 							flexGrow: 1,
 							display: { xs: "flex", md: "none" },
-							color: "#2D46B9",
+							color: a.state ? "white" : "#2D46B9",
 						}}>
 						LOGO
 					</Typography>
@@ -103,12 +117,14 @@ const ResponsiveAppBar = () => {
 							<Button
 								key={page}
 								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: "#2D46B9", display: "block" }}>
+								sx={{ my: 2, color: a.state ? "white" : "#2D46B9", display: "block" }}>
 								{page}
 							</Button>
 						))}
 					</Box>
-
+					<Box sx={{ flexGrow: 0.2 }}>
+					<Switch isToggled={isToggled} onToggle={function(){setIsToggled(!isToggled); props.changeBackground(isToggled); }}/>
+					</Box>
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -131,8 +147,8 @@ const ResponsiveAppBar = () => {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}>
 							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign="center" style={{ color: "#2D46B9" }}>
+								<MenuItem key={setting} onClick={handleCloseUserMenu} style={{ backgroundColor: a.state ? "#303134" : "white" }}>
+									<Typography textAlign="center" style={{ color: a.state ? "white" : "#2D46B9" }}>
 										{setting}
 									</Typography>
 								</MenuItem>
@@ -141,7 +157,10 @@ const ResponsiveAppBar = () => {
 					</Box>
 				</Toolbar>
 			</Container>
+              
 		</AppBar>
+		
+		</>
 	);
 };
 export default ResponsiveAppBar;

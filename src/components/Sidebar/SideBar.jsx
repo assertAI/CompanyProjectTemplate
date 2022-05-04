@@ -12,12 +12,14 @@ import { BiAnalyse, BiSearch } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
+import ThemeContext from "../../context/theme/ThemeContext";
+
 const routes = [
 	{
-		path: "/",
+		path: "/dashboard",
 		name: "Dashboard",
 		icon: <FaHome />,
 	},
@@ -94,6 +96,8 @@ const routes = [
 ];
 
 const SideBar = ({ children }) => {
+	const a = useContext(ThemeContext);
+
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(!isOpen);
 	const inputAnimation = {
@@ -143,7 +147,9 @@ const SideBar = ({ children }) => {
 							damping: 10,
 						},
 					}}
-					className={`sidebar `}>
+					className={`sidebar `}
+					style={{  background: a.state ? "#202124" : "white" }}
+					>
 					{/* <div className="top_section"> */}
 					{/* <AnimatePresence>
 							{isOpen && (
@@ -187,13 +193,14 @@ const SideBar = ({ children }) => {
 									/>
 								);
 							}
-
 							return (
 								<NavLink
 									to={route.path}
 									key={index}
 									className="link"
-									activeClassName="active">
+									activeClassName="active"
+									style={{color: a.state ? "white" : "#2D46B9"}}
+									>
 									<div className="icon">{route.icon}</div>
 									<AnimatePresence>
 										{isOpen && (
@@ -213,11 +220,11 @@ const SideBar = ({ children }) => {
 					</section>
 
 					{isOpen ? (
-						<div className="barsopen">
+						<div className="barsopen" style={{color: a.state ? "white" : "#2D46B9"}}>
 							<FaAngleDoubleLeft onClick={toggle} />
 						</div>
 					) : (
-						<div className="bars">
+						<div className="bars" style={{color: a.state ? "white" : "#2D46B9"}}>
 							<FaAngleDoubleRight onClick={toggle} />
 						</div>
 					)}
