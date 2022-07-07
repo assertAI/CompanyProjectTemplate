@@ -1,7 +1,137 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+.main-container {
+  display: flex;
+}
+main {
+  padding: 10px;
+}
+
+.title {
+  font-size: 3rem;
+  display: grid;
+  place-items: center;
+  background-color: #F6F6F6;
+
+}
+
+/* Sidebar */
+.sidebar {
+  background: white;
+  color: #2D46B9;
+  height: 89.5vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.top_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
+}
+.logo {
+  font-size: 18px;
+  line-height: 0;
+}
+.bars {
+  width: 40px;
+  padding-left: 13px;
+  padding-top: 150px;
+  cursor: pointer;
+}
+.barsopen {
+  width: 40px;
+  padding-left: 83px;
+  padding-top: 150px;
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  height: 30px;
+  padding: 10px;
+}
+.search input {
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  background: rgb(238, 238, 238);
+
+  color: #2D46B9;
+}
+
+.routes {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.link {
+  display: flex;
+  color: #2D46B9;
+  gap: 10px;
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  text-decoration: none;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.link:hover {
+  border-right: 4px solid white;
+  background: #E8E8E8;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.active {
+  border-right: 4px solid white;
+  background: #DCDCDC;
+}
+.link_text {
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+.menu {
+  display: flex;
+  color: #2D46B9;
+
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  justify-content: space-between;
+}
+.menu_item {
+  display: flex;
+  gap: 10px;
+}
+.menu_container {
+  display: flex;
+  flex-direction: column;
+}
+.menu_container .link {
+  padding-left: 20px;
+  border-bottom: #fff 0.5px solid;
+}
+
+.App {
+  text-align: center;
+  background-color: #F6F6F6;
+
+}
+
+.newApp{
+  background-color: #F6F6F6;
+  height: 90vh;
+  width: 100vw;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
